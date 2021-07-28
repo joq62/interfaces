@@ -1,2 +1,2 @@
 %% encoding: UTF-8
-{modules,[cli,doc_gen,kube_logger,monitor]}.
+{modules,[cli,doc_gen,iaas,kube_logger,kubelet,monitor]}.
