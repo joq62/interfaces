@@ -6,7 +6,9 @@
 %%% -------------------------------------------------------------------
 -define(PrintLog(Type,Msg,InfoList),
 	io:format("~s: ~w, ~s, ~p, ~n",
-		  [misc_fun:date_time(),Type,Msg,InfoList])).
+		  [misc_fun:date_time(),Type,Msg,InfoList]),
+	rpc:cast(node(),kube_logger,log_msg,[{date(),time(),node(),Type,Msg,InfoList}])
+       ).
 -record(kube_logger,
 	{
 	 id,

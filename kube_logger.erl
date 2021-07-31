@@ -66,13 +66,13 @@ add_monitor(Node)->
     gen_server:call(?SERVER, {add_monitor,Node},infinity).
 
 %%-----------------------------------------------------------------------
--spec log_msg(Info::string())-> atom().
+-spec log_msg({Date::term(),Time::term(),Node::atom(),Type::string(),Msg::string(),InfoList::term()})-> atom().
 %% 
 %% @doc:sends a log message to logger
-%% @param: Info text string with related information
+%% @param: Type=log|ticket|alert, Msg= Message in tex, InfoList=[info items])
 %% @returns: ok
-log_msg(Info)->
-    gen_server:cast(?SERVER, {log_msg,Info}).
+log_msg({Date,Time,Node,Type,Msg,InfoList})->
+    gen_server:cast(?SERVER, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
 
 %%-----------------------------------------------------------------------
 kube_log(Info)->
