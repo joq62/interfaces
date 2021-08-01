@@ -28,15 +28,19 @@
 	 ping/0
 	]).
 
--export([start/0,
+-export([
+	 boot/0,
+	 start/0,
 	 stop/0
+
 	]).
 
 
 %% ====================================================================
 %% External functions
 %% ====================================================================
-
+boot()->
+    monitor:start().
 %% Asynchrounus Signals
 
 %% Gen server functions

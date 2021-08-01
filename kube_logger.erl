@@ -23,11 +23,14 @@
 %% --------------------------------------------------------------------
 -export([
 	 log_msg/1,
+	 print_type/1,
+	 add_monitor/1,
+%---------------------
 	 kube_log/1,
 	 install_dbase/0,
 	 log/1,ticket/1,alarm/1,
 	 file_log/1,file_ticket/1,file_alarm/1,
-	 add_monitor/1,
+
 	 ping/0
        
 	]).
@@ -74,6 +77,9 @@ add_monitor(Node)->
 log_msg({Date,Time,Node,Type,Msg,InfoList})->
     gen_server:cast(?SERVER, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
 
+
+print_type(Type)->
+    gen_server:cast(?SERVER, {print_type,Type}).
 %%-----------------------------------------------------------------------
 kube_log(Info)->
        gen_server:cast(?SERVER, {kube_log,Info}).
