@@ -68,7 +68,7 @@ add_monitor(Node)->
 %% @param: Type=log|ticket|alert, Msg= Message in tex, InfoList=[info items])
 %% @returns: ok
 log_msg({Date,Time,Node,Type,Msg,InfoList})->
-    gen_server:cast(?SERVER, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
+    gen_server:cast(kube_logger_server, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
 
 print({Date,Time,Node,Type,Msg,InfoList})->
     gen_server:cast(?SERVER, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
