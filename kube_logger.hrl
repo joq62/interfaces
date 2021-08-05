@@ -5,7 +5,7 @@
 %%% Created : 10 dec 2012 
 %%% -------------------------------------------------------------------
 -define(PrintLog(Type,Msg,InfoList),
-	rpc:cast(node(),kubelet,log_msg,[{date(),time(),node(),Type,Msg,InfoList}])
+	rpc:cast(node(),kube_logger,log_msg,[{date(),time(),node(),Type,Msg,InfoList}])
        ).
 
 %-define(PrintLog(Type,Msg,InfoList),
