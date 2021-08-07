@@ -46,7 +46,7 @@
 
 %% Asynchrounus Signals
 
-%% Gen server functions
+%% Gen server functions 
 
 start()-> gen_server:start_link({local, ?SERVER}, ?SERVER, [], []).
 stop()-> gen_server:call(?SERVER, {stop},infinity).
