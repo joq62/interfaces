@@ -49,24 +49,9 @@ stop()-> gen_server:call(?SERVER, {stop},infinity).
 
 
 %%-----------------Cluster---------------------------------------
-%%---------------------------------------------------------------
--spec create_cluster(ClusterId::string())-> atom().
-%% 
-%% @doc:creates a cluster 
-%% @param: Cluster id 
-%% @returns: ok or {error,[Err]}
 
-create_cluster(ClusterId)->
-    gen_server:call(?SERVER, {create_cluster,ClusterId},infinity).
 status_all_clusters()->
     gen_server:call(?SERVER, {status_all_clusters},infinity).
-running_clusters()->
-    gen_server:call(?SERVER, {running_clusters},infinity).
-missing_clusters()->
-    gen_server:call(?SERVER, {not_available_clusters},infinity).
-status_cluster(ClusterId)->
-    gen_server:call(?SERVER, {status_cluster,ClusterId},infinity).
-
 
 cluster_strive_desired_state(ClusterStatus)->
     gen_server:cast(?SERVER, {cluster_strive_desired_state,ClusterStatus}).
@@ -76,13 +61,6 @@ cluster_strive_desired_state(ClusterStatus)->
 %%---------------------------------------------------------------
 status_all_hosts()->
     gen_server:call(?SERVER, {status_all_hosts},infinity).
-running_hosts()->
-    gen_server:call(?SERVER, {running_hosts},infinity).
-missing_hosts()->
-    gen_server:call(?SERVER, {missing_hosts},infinity).
-status_host(HostId)->
-    gen_server:call(?SERVER, {status_host,HostId},infinity).
-
 
 status_hosts(HostsStatus)->
     gen_server:cast(?SERVER, {status_hosts,HostsStatus}).

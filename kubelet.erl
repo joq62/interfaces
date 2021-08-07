@@ -22,11 +22,6 @@
 -define(SERVER,kubelet_server).
 %% --------------------------------------------------------------------
 -export([
-	 print/1,
-	 create_pod/1,
-	 delete_pod/1,
-	 get_pods/0,
-	 get_state/0,
 	 ping/0
 	]).
 
@@ -46,30 +41,6 @@
 start()-> gen_server:start_link({local, ?SERVER}, ?SERVER, [], []).
 stop()-> gen_server:call(?SERVER, {stop},infinity).
 
-
-
-print({Date,Time,Node,Type,Msg,InfoList})->
-    gen_server:cast(?SERVER, {log_msg,{Date,Time,Node,Type,Msg,InfoList}}).
-
-print_type(Type)->
-    gen_server:cast(?SERVER, {print_type,Type}).
-
--spec get_pods()-> term().
-%% 
-%% @doc:reads active pods 
-%% @param: no
-%% @returns: [PodId]
-
-get_pods()->
-    gen_server:call(?SERVER, {get_pods},infinity).
-
-create_pod(PodId)->
-    gen_server:call(?SERVER, {create_pod,PodId},infinity).
-delete_pod(PodId)->
-    gen_server:call(?SERVER, {delete_pod,PodId},infinity).
-    
-get_state()->
-    gen_server:call(?SERVER, {get_state},infinity).
 
 
 %%---------------------------------------------------------------
